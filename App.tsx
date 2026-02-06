@@ -31,7 +31,7 @@ const BackToTop: React.FC = () => {
   return (
     <button 
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="fixed bottom-10 right-10 z-[100] p-4 bg-brand-accent text-white rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all animate-fade-in group"
+      className="fixed bottom-24 right-6 z-[100] p-4 bg-brand-accent text-white rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all animate-fade-in group"
       aria-label={t('common.backToTop')}
     >
       <svg className="w-6 h-6 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
