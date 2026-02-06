@@ -24,6 +24,7 @@ export const translations = {
       trustLine: "Built personally by me — not a factory or template agency.",
       ctaPrimary: "Get clarity in 15 minutes",
       ctaSecondary: "Email Me",
+      ctaHowItWorks: "View How It Works",
       benefit1: "Lightning Fast Speed",
       benefit2: "Mobile-First Design",
       benefit3: "Lead Capture Optimized"
@@ -257,6 +258,7 @@ export const translations = {
       trustLine: "Creato personalmente da me — non da un’agenzia “a catena” o template.",
       ctaPrimary: "Chiarezza in 15 minuti",
       ctaSecondary: "Scrivimi via Email",
+      ctaHowItWorks: "Scopri come funziona",
       benefit1: "Velocità Fulminea",
       benefit2: "Design Mobile-First",
       benefit3: "Ottimizzato per i Lead"
