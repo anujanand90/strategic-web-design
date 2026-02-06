@@ -82,7 +82,7 @@ export const Hero: React.FC = () => {
               onClick={handleScrollToProcess}
               className="w-full sm:w-auto px-10 py-5 bg-zinc-900/50 text-white border border-white/10 font-bold rounded-2xl hover:bg-zinc-800 hover:border-brand-accent transition-all transform hover:-translate-y-0.5 active:scale-95 text-center backdrop-blur-sm cursor-pointer"
             >
-              {t('language') === 'it' ? 'Vedi Come Funziona' : 'View How It Works'}
+              {t('language') === 'it' ? 'Scopri come funziona' : 'View How It Works'}
             </button>
           </div>
         </Reveal>
