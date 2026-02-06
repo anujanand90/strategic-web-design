@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuj Anand | Strategic AI Web Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Plus Jakarta Sans', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                black: '#000000',
+                white: '#FFFFFF',
+                zinc: '#71717a',
+                accent: '#007DBC', // Primary Blue
+                hover: '#1A8ED8',
+                light: '#4DB3F0',
+              }
+            },
+            animation: {
+              'gradient-slow': 'gradient 15s ease infinite',
+              'shimmer': 'shimmer 2s linear infinite',
+              'beam': 'beam 4s ease-in-out infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              gradient: {
+                '0%, 100%': { 'background-position': '0% 50%' },
+                '50%': { 'background-position': '100% 50%' },
+              },
+              shimmer: {
+                '100%': { transform: 'translateX(100%)' },
+              },
+              beam: {
+                '0%, 100%': { opacity: 0.3, transform: 'translateX(-10%) translateY(-10%)' },
+                '50%': { opacity: 0.6, transform: 'translateX(10%) translateY(10%)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+        overflow-x: hidden;
+      }
+      .grid-bg {
+        background-image: linear-gradient(to right, #1f1f1f 1px, transparent 1px),
+                          linear-gradient(to bottom, #1f1f1f 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .glow-mesh {
+        background: radial-gradient(circle at 50% 50%, rgba(0, 125, 188, 0.1) 0%, transparent 50%);
+      }
+      ::selection {
+        background: rgba(0, 125, 188, 0.3);
+        color: #fff;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "framer-motion": "https://esm.sh/framer-motion@^11.0.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+      (function syncLangOnLoad() {
+        const stored = (localStorage.getItem("app-lang") || "").toLowerCase();
+        if (stored.startsWith("it")) document.documentElement.lang = "it";
+        else if (stored.startsWith("en")) document.documentElement.lang = "en";
+      })();
+    </script>
+
+    <elevenlabs-convai
+      agent-id="agent_4701kgmth21mf2nt3q0tg5ck4213"
+      variant="full"
+      markdown-link-allowed-hosts="calendly.com">
+    </elevenlabs-convai>
+
+    <script
+      src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+      async
+      type="text/javascript">
+    </script>
+
+    <script>
+      function getLang() {
+        const stored = (localStorage.getItem("app-lang") || "").toLowerCase();
+        return stored.startsWith("it") ? "it" : "en";
+      }
+
+      function applyElevenLabsOverrides() {
+        const widget = document.querySelector("elevenlabs-convai");
+        if (!widget) return;
+
+        const lang = getLang();
+
+        widget.setAttribute("override-language", lang);
+
+        if (lang === "it") {
+          widget.setAttribute(
+            "override-first-message",
+            "Ciao! Posso aiutarti a prenotare una consulenza di 15 minuti con Anuj. È quello che stai cercando di fare oggi?"
+          );
+        } else {
+          widget.setAttribute(
+            "override-first-message",
+            "Hi! I can help you book a 15-minute consultation with Anuj. Is that what you're looking to do today?"
+          );
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", applyElevenLabsOverrides);
+      window.addEventListener("language:changed", applyElevenLabsOverrides);
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const widget = document.querySelector("elevenlabs-convai");
+        if (!widget) return;
+
+        function getSiteLang() {
+          const htmlLang = (document.documentElement.lang || "").toLowerCase();
+          if (htmlLang.startsWith("it")) return "it";
+          if (htmlLang.startsWith("en")) return "en";
+
+          const stored = (localStorage.getItem("app-lang") || "").toLowerCase();
+          if (stored.startsWith("it")) return "it";
+          if (stored.startsWith("en")) return "en";
+
+          return "en";
+        }
+
+        widget.addEventListener("elevenlabs-convai:call", (event) => {
+          const lang = getSiteLang();
+          
+          // Ensure config exists
+          event.detail.config = event.detail.config || {};
+          
+          // Apply conversation overrides (language only)
+          event.detail.config.overrides = {
+            ...(event.detail.config.overrides || {}),
+            language: lang
+          };
+        });
+      });
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

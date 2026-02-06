@@ -1,0 +1,8 @@
+{
+  "name": "Anuj Anand | Strategic Web Design",
+  "description": "High-performance, conversion-first websites for SMBs. AI-assisted design and strategic messaging to turn visitors into loyal customers.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
